@@ -42,4 +42,35 @@ public class ProductManager {
         return turn;
     }
 
+    public String[] findLastNotMoreLimit(){
+        int resultFilms;
+        if (film.length<limit){
+            resultFilms= film.length;
+        }else {
+            resultFilms= limit;
+        }
+        String [] ans = new String[resultFilms];
+        for (int i = 0; i < film.length; i++) {
+            ans[i] = film[i];
+        }
+        return ans;
+
+    }
+    public String[] findLastMoreLimit(){
+        int resultMoreFilms;
+        if (film.length>limit){
+            resultMoreFilms= film.length;
+        }else {
+            resultMoreFilms= limit;
+        }
+        String [] ans = new String[resultMoreFilms];
+        for (int i = 0; i < film.length; i++) {
+            ans[i] = film[i];
+        }
+        return ans;
+
+    }
+
+
+
 }

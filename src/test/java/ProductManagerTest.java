@@ -16,6 +16,65 @@ public class ProductManagerTest {
 
         Assertions.assertArrayEquals(expected, actual);
     }
+    @Test
+    public void notMoreLimit() {
+        ProductManager manager = new ProductManager(5);
+        manager.saveMovies("Kino 1");
+        manager.saveMovies("Kino 2");
+
+        String[] expected = {"Kino 1", "Kino 2"};
+        String[] actual = manager.findLastNotMoreLimit();
+
+        Assertions.assertArrayEquals(expected, actual);
+
+    }
+
+    @Test
+    public void moreLimit(){
+        ProductManager manager= new ProductManager(5);
+        manager.saveMovies("Kino 1");
+        manager.saveMovies("Kino 2");
+        manager.saveMovies("Kino 3");
+        manager.saveMovies("Kino 4");
+        manager.saveMovies("Kino 5");
+        manager.saveMovies("Kino 6");
+
+        String[] expected = {"Kino 1", "Kino 2","Kino 3", "Kino 4","Kino 5", "Kino 6"};
+        String[] actual = manager.findLastMoreLimit();
+
+        Assertions.assertArrayEquals(expected, actual);
+
+    }
+    @Test
+    public void  equalsLimit(){
+        ProductManager manager = new ProductManager(5);
+        manager.saveMovies("Kino 1");
+        manager.saveMovies("Kino 2");
+        manager.saveMovies("Kino 3");
+        manager.saveMovies("Kino 4");
+        manager.saveMovies("Kino 5");
+
+        String[] expected = {"Kino 1", "Kino 2","Kino 3", "Kino 4","Kino 5",};
+        String [] actual = manager.findLastMoreLimit();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void  equalsElseLimit() {
+        ProductManager manager = new ProductManager(5);
+        manager.saveMovies("Kino 1");
+        manager.saveMovies("Kino 2");
+        manager.saveMovies("Kino 3");
+        manager.saveMovies("Kino 4");
+        manager.saveMovies("Kino 5");
+
+        String[] expected = {"Kino 1", "Kino 2", "Kino 3", "Kino 4", "Kino 5",};
+        String[] actual = manager.findLastNotMoreLimit();
+
+        Assertions.assertArrayEquals(expected, actual);
+
+    }
 
     @Test
     public void allTurnFilms() {
@@ -27,6 +86,7 @@ public class ProductManagerTest {
         String[] expected = {"Kino 3", "Kino 2", "Kino 1"};
         String[] actual = manager.findLast();
     }
+
 
     @Test
     public void moreTurnFilms() {
@@ -44,4 +104,6 @@ public class ProductManagerTest {
         String[] expected = {"Kino 9", "Kino 8", "Kino 7", "Kino 6", "Kino 5", "Kino 4", "Kino 3", "Kino 2", "Kino 1"};
         String[] actual = manager.findLast();
     }
+
+
 }
